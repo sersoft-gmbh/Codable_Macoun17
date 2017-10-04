@@ -1,0 +1,31 @@
+{
+  "date_from" : "2017-10-07T10:00:00+0200",
+  "date_to" : "2017-10-08T17:00:00+0200",
+  "name" : "Macoun",
+  "participants" : [
+    {
+      "company" : "ser.soft GmbH",
+      "id" : 1,
+      "is_speaker" : true,
+      "name" : "Daniel Friedrich"
+    },
+    {
+      "company" : "ser.soft GmbH",
+      "id" : 2,
+      "is_speaker" : true,
+      "name" : "Florian Friedrich"
+    },
+    {
+      "company" : null,
+      "id" : 3,
+      "is_speaker" : false,
+      "name" : "Hans Muster"
+    },
+    {
+      "company" : "My Big Company AG",
+      "id" : 4,
+      "is_speaker" : false,
+      "name" : "Peter Beispiel"
+    }
+  ]
+}

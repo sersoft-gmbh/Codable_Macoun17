@@ -1,0 +1,18 @@
+{
+    "title": "Demystifying AutoLayout",
+    "copyright": "ser.soft GmbH",
+    "year": 2016,
+    "developers": [
+        "Daniel Friedrich",
+        "Florian Friedrich"
+    ],
+    "conference": {
+        "name": "Macoun",
+        "is_anniversary": false
+    },
+    "company": {
+        "name": "ser.soft GmbH",
+        "founding_year": 2001,
+        "employee_count": 5
+    }
+}
