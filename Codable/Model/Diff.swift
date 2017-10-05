@@ -46,7 +46,7 @@ fileprivate extension Array where Element == String {
     func changes(comparedTo head: Array<String>) -> [(String, Diff.Change)] {
         var (arr1, arr2) = (self, head)
         var result: [(String, Diff.Change)] = []
-        func apply(isAdded: Bool, at idx: Int) {
+        func apply(isAdded: Bool, at idx: Int, unchanged element: String) {
             let change: Diff.Change = isAdded ? .added : .removed
             let lines: ArraySlice<String>
             if isAdded {
@@ -57,6 +57,7 @@ fileprivate extension Array where Element == String {
                 arr1.removeSubrange(..<idx)
             }
             result.append(contentsOf: zip(lines, repeatElement(change, count: lines.count)))
+            result.append((element, .unchanged))
         }
         while let a = arr1.first, let b = arr2.first {
             defer {
@@ -69,11 +70,11 @@ fileprivate extension Array where Element == String {
                 result.append(contentsOf: [(a, .removed), (b, .added)])
             } else if let idxA = arr2.dropFirst().index(of: a), let idxB = arr1.dropFirst().index(of: b) {
                 let idx = Swift.min(idxA, idxB)
-                apply(isAdded: idx == idxA, at: idx)
+                apply(isAdded: idx == idxA, at: idx, unchanged: idx == idxA ? a : b)
             } else if let idx = arr2.dropFirst().index(of: a) {
-                apply(isAdded: true, at: idx)
+                apply(isAdded: true, at: idx, unchanged: a)
             } else if let idx = arr1.dropFirst().index(of: b) {
-                apply(isAdded: false, at: idx)
+                apply(isAdded: false, at: idx, unchanged: b)
             } else {
                 result.append(contentsOf: [(a, .removed), (b, .added)])
             }
