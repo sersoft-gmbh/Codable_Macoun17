@@ -22,29 +22,29 @@ final class DiffViewController: ViewController {
 
     private func updateContents() {
         diffTextView.attributedText = diff?.changes.reduce(into: NSMutableAttributedString()) {
-            $0.append(NSAttributedString(string: $1.1.description(for: $1.0) + "\n", attributes: $1.1.attribtues))
+            $0.append(NSAttributedString(string: $1.1.description(for: $1.0) + "\n", attributes: $1.1.attributes))
         }
     }
 }
 
 fileprivate extension Diff.Change {
-    var attribtues: [NSAttributedStringKey: Any] {
+    var attributes: [NSAttributedStringKey: Any] {
         switch self {
         case .unchanged:
             return [
-                .font: UIFont(name: "Courier New", size: 15)!,
+                .font: UIFont(name: "Courier New", size: 14)!,
                 .foregroundColor: UIColor.black,
                 .backgroundColor: UIColor.clear
             ]
         case .added:
             return [
-                .font: UIFont(name: "Courier New", size: 15)!,
+                .font: UIFont(name: "Courier New", size: 14)!,
                 .foregroundColor: UIColor(named: "AddedLine")!,
                 .backgroundColor: UIColor(named: "AddedLineBG")!
             ]
         case .removed:
             return [
-                .font: UIFont(name: "Courier New", size: 15)!,
+                .font: UIFont(name: "Courier New", size: 14)!,
                 .foregroundColor: UIColor(named: "RemovedLine")!,
                 .backgroundColor: UIColor(named: "RemovedLineBG")!
             ]
